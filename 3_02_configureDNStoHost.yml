@@ -1,0 +1,23 @@
+---
+- hosts: localhost 
+  name: Configure DNS IP addresses to host
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_host_dns:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      esxi_hostname: '192.168.1.53'
+      type: static
+      host_name: esx03
+      domain: test.local
+      dns_servers:
+              - 192.168.1.100
+      search_domains:
+              - test.local
+      validate_certs: no
+    delegate_to: localhost
+
+
+
+

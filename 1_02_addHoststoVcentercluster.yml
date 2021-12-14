@@ -1,0 +1,17 @@
+---
+- hosts: localhost 
+  name: Add esxi hosts to vcenter
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_host:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      validate_certs: no
+      datacenter: datacenter
+      cluster: cluster
+      esxi_hostname: '192.168.1.51'
+      esxi_username: 'root'
+      esxi_password: '12qwasZX'
+      state: present
+    delegate_to: localhost

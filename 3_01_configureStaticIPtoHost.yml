@@ -1,0 +1,25 @@
+---
+- hosts: localhost 
+  name: Configure static IP addresses to host
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_vmkernel:
+      hostname: '192.168.1.53'
+      username: 'root'
+      password: '12qwasZX'
+      esxi_hostname: '192.168.1.53'
+      vswitch_name: vSwitch0
+      portgroup_name: Management Network
+      device: vmk0
+      network:
+              type: 'static'
+              ip_address: 192.168.1.53
+              subnet_mask: 255.255.255.0
+      state: present
+      enable_mgmt: True
+      validate_certs: no
+    delegate_to: localhost
+
+
+
+

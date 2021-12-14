@@ -1,0 +1,57 @@
+---
+- hosts: localhost 
+  name: add vsan vmk to host and link to vds
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_vmkernel:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      esxi_hostname: '192.168.1.51'
+      dvswitch_name: dvSwitch
+      portgroup_name: vsan_vmk2
+      network:
+              type: 'static'
+              ip_address: 192.168.1.251
+              subnet_mask: 255.255.255.0
+      state: present
+      enable_vsan: yes
+      mtu: 1500
+      validate_certs: no
+    delegate_to: localhost
+
+  - community.vmware.vmware_vmkernel:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      esxi_hostname: '192.168.1.52'
+      dvswitch_name: dvSwitch
+      portgroup_name: vsan_vmk2
+      network:
+              type: 'static'
+              ip_address: 192.168.1.252
+              subnet_mask: 255.255.255.0
+      state: present
+      enable_vsan: yes
+      mtu: 1500
+      validate_certs: no
+    delegate_to: localhost
+  - community.vmware.vmware_vmkernel:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      esxi_hostname: '192.168.1.53'
+      dvswitch_name: dvSwitch
+      portgroup_name: vsan_vmk2
+      network:
+              type: 'static'
+              ip_address: 192.168.1.253
+              subnet_mask: 255.255.255.0
+      state: present
+      enable_vsan: yes
+      mtu: 1500
+      validate_certs: no
+    delegate_to: localhost
+
+
+

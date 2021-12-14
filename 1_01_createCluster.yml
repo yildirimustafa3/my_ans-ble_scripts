@@ -1,0 +1,16 @@
+---
+- hosts: localhost 
+  name: Create Cluster
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_cluster:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      validate_certs: no
+      datacenter_name: datacenter
+      cluster_name: test_deneme
+      enable_ha: false
+      enable_drs: false
+      enable_vsan: false
+    delegate_to: localhost

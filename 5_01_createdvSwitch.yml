@@ -1,0 +1,23 @@
+---
+- hosts: localhost 
+  name: Create dvSwitch
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_dvswitch:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      datacenter: datacenter
+      validate_certs: no
+      switch: dvSwitch
+      version: 7.0.0
+      mtu: 9000
+      uplink_quantity: 2
+      discovery_protocol: lldp
+      discovery_operation: both
+      state: present
+    delegate_to: localhost
+
+
+
+

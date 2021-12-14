@@ -1,0 +1,18 @@
+---
+- hosts: localhost 
+  name: Set ntp server to cluster
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_host_ntp:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      validate_certs: no
+      cluster_name: cluster
+      state: present
+      ntp_servers: 192.168.1.100
+    delegate_to: localhost
+
+
+
+

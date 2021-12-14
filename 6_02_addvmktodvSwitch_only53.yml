@@ -1,0 +1,23 @@
+---
+- hosts: localhost 
+  name: add vmk to vds
+  gather_facts: false
+  tasks:
+  - community.vmware.vmware_vmkernel:
+      hostname: '192.168.1.199'
+      username: 'administrator@vsphere.local'
+      password: 'VMware1!'
+      esxi_hostname: '192.168.1.53'
+      dvswitch_name: dvSwitch
+      portgroup_name: mgmt_vmk0
+      device: vmk3
+      network:
+              type: 'dhcp'
+      state: present
+      enable_mgmt: True
+      validate_certs: no
+    delegate_to: localhost
+
+
+
+
